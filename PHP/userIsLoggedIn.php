@@ -8,8 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_SESSION['data'])) {
         
         // Take data from previous login page
-        // $data = json_decode($_SESSION['data'], true);
-        // $username = htmlspecialchars($data['fname']);
+        /*
+        $data = json_decode($_SESSION['data'], true);
+        $username = htmlspecialchars($data['fname']);
+        */
 
         // Take data from URL
         if (isset($_GET['username'])) {
