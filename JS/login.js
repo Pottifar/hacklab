@@ -6,7 +6,7 @@ function login() {
 }
 
 function sendRequest(){
-    fetch('http://192.168.140.130//backend.php', {
+    fetch('http://192.168.140.130/hacklab/PHP/backend.php', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
