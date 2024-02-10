@@ -1,5 +1,5 @@
 function sendRequest(){
-    let username = document.getElementById("usernameInput").innerHTML;
+    let username = document.getElementById("usernameInput").value;
     fetch('http://192.168.140.130/hacklab/PHP/backend.php', {
         method: 'POST',
         headers: {
