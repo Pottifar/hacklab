@@ -8,10 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $postdata = file_get_contents("php://input"); // Get the JSON contents from the POST request
     $request = json_decode($postdata); // Decode JSON message
+    $message = $request->message;
 
     // Your data here. This could also be a call to a database.
     $data = array(
-        "message" => $request
+        "message" => $message
     );
 
     // Returns a JSON response
