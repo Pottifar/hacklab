@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style.css">
     <title>Login Page</title>
-    <script src="../JS/login.js"></script>
 </head>
+<script>
+    let params = new URLSearchParams(window.location.search);
+    let error = params.get('error');
+    
+    if (error) {
+        switch (error) {
+            case '1':
+                document.getElementById("error").innerHTML = "Username is taken.";
+                break;
+            case '2':
+            document.getElementById("error").innerHTML = "Something went wrong. Try again later.";
+                break;
+        }
+    }
+</script>
 <body>
     
     <h1>Login Page</h1>
@@ -19,18 +33,6 @@
             <input type="submit" value="Log In">
         </form>
         <div id="error"></div>
-        <?php
-            if (isset($_GET['error'])) {
-                switch ($_GET['error']) {
-                    case 1:
-                        echo "Username is already taken."
-                        break;
-                    case 2:
-                        echo "Something went wrong."
-                        break;
-                }
-            }
-        ?>
     </div>
     <div id="vuln"></div>
     
