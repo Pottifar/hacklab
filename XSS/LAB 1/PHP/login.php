@@ -1,10 +1,5 @@
 <?php
 
-header('Content-type: application/json');
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Connect to database
@@ -29,29 +24,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 function checkCredentials($conn, $username, $password) {
-   
-    // Prepare a SELECT statement to get the user's password
-    $stmt = $conn->prepare("SELECT username FROM Users WHERE username = ? AND hashedPassword = ?");
-    $stmt->bind_param("ss", $username, $password);
+    // Prepare a SELECT statement to get the user's hashed password
+    $stmt = $conn->prepare("SELECT hashedPassword FROM Users WHERE username = ?");
+    $stmt->bind_param("s", $username);
 
     // Execute the statement
     $stmt->execute();
 
     // Bind the result
-    $usernameVerified = "";
-    $stmt->bind_result($usernameVerified);
+    $hashedPassword = "";
+    $stmt->bind_result($hashedPassword);
 
-    if($stmt->fetch()){
-        // Save the JSON string to a session variable
-        session_start();
-        $_SESSION['username'] = $usernameVerified;
+    // If a user with the given username exists
+    if ($stmt->fetch()){
+        // Verify the password
+        if (password_verify($password, $hashedPassword)) {
+            // Save the JSON string to a session variable
+            session_start();
+            $_SESSION['username'] = $username;
 
-        // Redirect to another HTML page
-        header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/PHP/application.php");
-        exit();
+            // Redirect to another HTML page
+            header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/PHP/application.php");
+            exit();
+        } else {
+            echo "Your password is incorrect.";
+        }
     } else {
-        echo "Your username or password is incorrect.";
+        echo "Your username is incorrect.";
     }
 }
+
+
 
 ?>

