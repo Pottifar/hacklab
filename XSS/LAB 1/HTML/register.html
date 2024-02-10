@@ -18,16 +18,18 @@
             <br>
             <input type="submit" value="Log In">
         </form>
+        <div id="error"></div>
         <?php
-            if (isset($_GET['error']) {
+            if (isset($_GET['error'])) {
                 switch ($_GET['error']) {
                     case 1:
                         echo "Username is already taken."
                         break;
-                    case 1:
+                    case 2:
                         echo "Something went wrong."
                         break;
                 }
+            }
         ?>
     </div>
     <div id="vuln"></div>
