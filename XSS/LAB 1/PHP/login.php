@@ -1,6 +1,9 @@
 <?php
 
 header('Content-type: application/json');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -13,6 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
     // Get the form data
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -23,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function checkCredentials($conn, $username, $password) {
    
     // Prepare a SELECT statement to get the user's password
-    $stmt = $conn->prepare("SELECT id FROM Users WHERE username = ? AND password = ?");
+    $stmt = $conn->prepare("SELECT id FROM Users WHERE username = ? AND hashedPassword = ?");
     $stmt->bind_param("ss", $username, $password);
 
     // Execute the statement
