@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Your data here. This could also be a call to a database.
     $data = array(
-        "message" => $postdata
+        "message" => $request
     );
 
     // Returns a JSON response
