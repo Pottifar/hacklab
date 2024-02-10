@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     ";
     if (isset($_GET['item'])) {
         $item = $_GET['item'];
-        echo "Results for $item:";
+        echo "Results for $item: <br>";
         if(searchForItem($item)){
             echo "$item was found!";
         } else {
