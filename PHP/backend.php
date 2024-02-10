@@ -17,13 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Returns a JSON response
     echo json_encode($data);
-} else {
-    // If the request method is not GET, return an error message
-    http_response_code(405);
-    echo json_encode(array("message" => "This method is not allowed."));
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+} elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     echo json_encode(htmlspecialchars($_GET['username'] ?? ''));
 
