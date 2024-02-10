@@ -13,11 +13,9 @@ function sendRequest(){
         console.log(data);
         let username = data.message;
         document.getElementById("vuln").innerHTML = username;
-    
+        
     })
     .catch((error) => {
     console.error('Error:', error);
     });
-
-    
 }
