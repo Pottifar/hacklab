@@ -31,20 +31,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function checkCredentials($conn, $username, $password) {
    
     // Prepare a SELECT statement to get the user's password
-    $stmt = $conn->prepare("SELECT id FROM Users WHERE username = ? AND hashedPassword = ?");
+    $stmt = $conn->prepare("SELECT username FROM Users WHERE username = ? AND hashedPassword = ?");
     $stmt->bind_param("ss", $username, $password);
 
     // Execute the statement
     $stmt->execute();
 
     // Bind the result
-    $userID = "";
-    $stmt->bind_result($userID);
+    $usernameVerified = "";
+    $stmt->bind_result($usernameVerified);
 
     if($stmt->fetch()){
         // Save the JSON string to a session variable
         session_start();
-        $_SESSION['data'] = $userID;
+        $_SESSION['username'] = $usernameVerified;
 
         // Redirect to another HTML page
         header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/HTML/loggedin.html");
