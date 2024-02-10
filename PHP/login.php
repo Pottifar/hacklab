@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['data'] = $json;
 
     // Redirect to another HTML page
-    header("Location: http://192.168.140.130/hacklab/HTML/loggedin.html");
+    header("Location: http://192.168.140.130/hacklab/PHP/userIsLoggedIn.php");
     exit();
 }
 ?>
