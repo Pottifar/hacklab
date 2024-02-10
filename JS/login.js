@@ -1,10 +1,3 @@
-function login() {
-    let password = document.getElementById("passwordInput").value;
-    let username = document.getElementById("usernameInput").value;
-    console.log("Username is: " + username + " and password is " + password);
-    document.cookie = "sessionid=testid"
-}
-
 function sendRequest(){
     fetch('http://192.168.140.130/hacklab/PHP/backend.php', {
         method: 'GET',
@@ -17,4 +10,6 @@ function sendRequest(){
     .catch((error) => {
     console.error('Error:', error);
     });
+
+    document.getElementById("vuln").innerHTML = data.messeage;
 }
