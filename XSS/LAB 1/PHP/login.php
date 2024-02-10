@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Connect to database
-    $servername = "192.168.140.130";
+    $servername = "localhost";
     $username = "web-server";
     $password = "web-server123";
     $dbname = "Hacklab";
