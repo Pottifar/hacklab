@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-    echo htmlspecialchars($_GET['username'] ?? '');
-    
+    echo json_encode(htmlspecialchars($_GET['username'] ?? ''));
+
 } else {
     // If the request method is not GET, return an error message
     http_response_code(405);
