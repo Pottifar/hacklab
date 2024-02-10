@@ -7,19 +7,23 @@
     <title>Login Page</title>
 </head>
 <script>
-    let params = new URLSearchParams(window.location.search);
-    let error = params.get('error');
-    
-    if (error) {
-        switch (error) {
-            case '1':
-                document.getElementById("error").innerHTML = "Username is taken.";
-                break;
-            case '2':
-            document.getElementById("error").innerHTML = "Something went wrong. Try again later.";
-                break;
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+        let params = new URLSearchParams(window.location.search);
+        let error = params.get('error');
+        
+        if (error) {
+            switch (error) {
+                case '1':
+                    document.getElementById("error").innerHTML = "Username is taken.";
+                    break;
+                case '2':
+                    document.getElementById("error").innerHTML = "Something went wrong. Try again later.";
+                    break;
+            }
         }
-    }
+    })
 </script>
 <body>
     
