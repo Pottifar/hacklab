@@ -24,25 +24,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 function registerNewUser($conn, $username, $password) {
-    // Hash the password
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    // Prepare an INSERT statement
-    $stmt = $conn->prepare("INSERT INTO Users (username, hashedPassword) VALUES (?, ?)");
-
-    // Bind parameters
-    $stmt->bind_param("ss", $username, $hashedPassword);
+    // Prepare a SELECT statement to check if the username is already taken
+    $stmt = $conn->prepare("SELECT username FROM Users WHERE username = ?");
+    $stmt->bind_param("s", $username);
 
     // Execute the statement
-    if ($stmt->execute()) {
-        // Save the JSON string to a session variable
-        session_start();
-        $_SESSION['username'] = $username;
+    $stmt->execute();
 
-        // Redirect to another HTML page
-        header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/PHP/application.php");
+    // If a user with the given username exists
+    if ($stmt->fetch()){
+        header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/HTML/register.html?error=1");
+        exit();
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'Could not create user.']);
+        // Hash the password
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        // Prepare an INSERT statement
+        $stmt = $conn->prepare("INSERT INTO Users (username, hashedPassword) VALUES (?, ?)");
+
+        // Bind parameters
+        $stmt->bind_param("ss", $username, $hashedPassword);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            // Redirect to another HTML page
+            header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/PHP/application.php");
+            exit();
+        } else {
+            header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/HTML/register.html?error=2");
+            exit();
+        }
     }
 }
 

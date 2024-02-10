@@ -47,10 +47,10 @@ function checkCredentials($conn, $username, $password) {
             header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/PHP/application.php");
             exit();
         } else {
-            echo "Your password is incorrect.";
+            echo "Your password or username is incorrect.";
         }
     } else {
-        echo "Your username is incorrect.";
+        echo "Your password or username is incorrect.";
     }
 }
 
