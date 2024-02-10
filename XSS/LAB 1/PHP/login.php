@@ -39,7 +39,7 @@ function checkCredentials($conn, $username, $password) {
         $_SESSION['data'] = $userID;
 
         // Redirect to another HTML page
-        header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/PHP/userIsLoggedIn.php");
+        header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/HTML/loggedin.html");
         exit();
     } else {
         echo "Your username or password is incorrect.";
