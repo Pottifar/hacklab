@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 // Check if the request method is GET
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
-    $username = $_SESSION['username'];
+    $username = htmlspecialchars($_SESSION['username']);
 
     // Generate the HTML page
     echo "
