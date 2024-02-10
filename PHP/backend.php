@@ -3,11 +3,15 @@
 header('Content-type: application/json');
 
 // Check if the request method is GET
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    
+    $postdata = file_get_contents("php://input"); // Get the JSON contents from the POST request
+    $request = json_decode($postdata); // Decode JSON message
 
     // Your data here. This could also be a call to a database.
     $data = array(
-        "message" => "Hello, this is your PHP endpoint!"
+        "message" => $postdata
     );
 
     // Returns a JSON response

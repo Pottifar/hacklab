@@ -1,9 +1,11 @@
 function sendRequest(){
+    let username = document.getElementById("usernameInput").innerHTML;
     fetch('http://192.168.140.130/hacklab/PHP/backend.php', {
-        method: 'GET',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
     },
+    body: JSON.stringify({message: username})
     })
     .then(response => response.json())
     .then(data => {
