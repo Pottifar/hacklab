@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo json_encode($data);
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-    echo json_encode($_GET['username']);
+    echo json_encode("test");
 
 } else {
     // If the request method is not GET, return an error message

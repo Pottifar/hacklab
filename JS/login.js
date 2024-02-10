@@ -30,7 +30,7 @@ function sendGetRequest(){
     })
     .then(response => response.json())
     .then(data => {
-    console.log(data);
+        console.log(data);
         let myData = data; 
         document.getElementById("vuln").innerHTML = myData;
     })
