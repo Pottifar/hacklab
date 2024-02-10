@@ -10,7 +10,7 @@ function sendRequest(){
     .then(response => response.json())
     .then(data => {
 
-        console.log(data.message);
+        console.log(data);
         let username = data.message;
         document.getElementById("vuln").innerHTML = username;
     
