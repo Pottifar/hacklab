@@ -22,8 +22,8 @@ function sendPostRequest(){
 
 function sendGetRequest(){
     
-    fetch('http://yourdomain.com/endpoint.php', {
-    method: 'GET', // or 'POST'
+    fetch('http://192.168.140.130/hacklab/PHP/backend.php', {
+    method: 'GET',
     headers: {
         'Content-Type': 'application/json',
     },
