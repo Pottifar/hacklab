@@ -11,8 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fname = $_POST['username'];
         $lname = $_POST['password'];
       
-        // Do something with the form data
-        echo "Hello, " . htmlspecialchars($fname) . " " . htmlspecialchars($lname) . "!";
+        /// Create an associative array
+        $data = array(
+            "fname" => $fname,
+            "lname" => $lname,
+        );
+
+        // Convert the array to a JSON string
+        $json = json_encode($data);
+
+        // Output the JSON string
+        echo $json;
     }
 } 
 ?>
