@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_SESSION['data'])) {
         // Decode the JSON data
         $data = json_decode($_SESSION['data'], true);
-        $username = htmlspecialchars($data['fname']);
+        $username = $data['username'];
 
         // Generate the HTML page
         echo "
