@@ -6,9 +6,17 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Check if data is set in the session
     if (isset($_SESSION['data'])) {
-        // Decode the JSON data
-        $data = json_decode($_SESSION['data'], true);
-        $username = $data['fname'];
+        
+        // Take data from previous login page
+        // $data = json_decode($_SESSION['data'], true);
+        // $username = htmlspecialchars($data['fname']);
+
+        // Take data from URL
+        if (isset($_GET['username'])) {
+            $username = $_GET['username'];
+        } else {
+            $username = "Default username";
+        }
 
         // Generate the HTML page
         echo "
