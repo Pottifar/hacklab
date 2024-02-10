@@ -10,13 +10,13 @@
 <body>
     <h1>Login Page</h1>
     <div class="inputField">
-
-        <input id="usernameInput" placeholder="Username" type="text">
-        <br>
-        <input id="passwordInput" placeholder="Password" type="password">
-        <br>
-        <button onclick="sendPostRequest()">POST</button>
-        <button onclick="sendGetRequest()">GET</button>
+        <form action="http://192.168.140.130/hacklab/PHP/backend.php" method="post">
+            <input id="usernameInput" placeholder="Username" type="text">
+            <br>
+            <input id="passwordInput" placeholder="Password" type="password">
+            <br>
+            <input  onclick="submit()">Log in</button>
+        </form>
     </div>
     <div id="vuln"></div>
     
