@@ -6,10 +6,15 @@ function sendRequest(){
     },
     })
     .then(response => response.json())
-    .then(data => console.log(data.message))
+    .then(data => {
+
+        console.log(data.message);
+        let username = data.message;
+    
+    })
     .catch((error) => {
     console.error('Error:', error);
     });
 
-    document.getElementById("vuln").innerHTML = data.message;
+    document.getElementById("vuln").innerHTML = username;
 }
