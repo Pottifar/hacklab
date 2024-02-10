@@ -10,11 +10,12 @@ function sendRequest(){
 
         console.log(data.message);
         let username = data.message;
+        document.getElementById("vuln").innerHTML = username;
     
     })
     .catch((error) => {
     console.error('Error:', error);
     });
 
-    document.getElementById("vuln").innerHTML = username;
+    
 }
