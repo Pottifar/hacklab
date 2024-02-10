@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <body>
         <h1>Logged in as $username!</h1>
         <form action='http://192.168.140.130/hacklab/XSS/LAB 1/PHP/application.php' method='get'>
-            <input type='text' name='item' placeholder='Search'>
+            <input type='text'  name='item' placeholder='Search' required>
             <input type='submit' value='Search'>
         </form>
     
