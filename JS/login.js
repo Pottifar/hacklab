@@ -19,3 +19,22 @@ function sendRequest(){
     console.error('Error:', error);
     });
 }
+
+function sendGetRequest(){
+    
+    fetch('http://yourdomain.com/endpoint.php', {
+    method: 'GET', // or 'POST'
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    })
+    .then(response => response.json())
+    .then(data => {
+    console.log(data);
+        let myData = data; 
+        document.getElementById("vuln").innerHTML = myData;
+    })
+    .catch((error) => {
+    console.error('Error:', error);
+    });
+}
