@@ -1,5 +1,5 @@
 function getUserData(){
-    fetch('http://http://192.168.140.130/hacklab/PHP/userIsLoggedIn.php', {
+    fetch('http://192.168.140.130/hacklab/PHP/userIsLoggedIn.php', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
