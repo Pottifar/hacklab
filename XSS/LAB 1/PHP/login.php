@@ -16,12 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the form data
     $username = $_POST['username'];
     $password = $_POST['password'];
-    
-    /// Create an associative array
-    $data = array(
-        "username" => $username,
-        "password" => $password,
-    );
 
     checkCredentials($conn, $username, $password);
 }
