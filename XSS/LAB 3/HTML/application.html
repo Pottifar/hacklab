@@ -8,6 +8,15 @@
 <p id="result"></p>
 
 <script>
+    window.onload = function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var searchParam = urlParams.get('search');
+        if (searchParam) {
+            document.getElementById("search").value = searchParam;
+            searchFunction();
+        }
+    };
+    
     function searchFunction() {
         var x = document.getElementById("search").value;
         document.getElementById("result").innerHTML = "You searched for: " + x;
