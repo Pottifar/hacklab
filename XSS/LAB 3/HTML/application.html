@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Search</h2>
+
+<input type="text" id="search" oninput="searchFunction()">
+<p id="result"></p>
+
+<script>
+    function searchFunction() {
+        var x = document.getElementById("search").value;
+        document.getElementById("result").innerHTML = "You searched for: " + x;
+    }
+</script>
+
+</body>
+</html>

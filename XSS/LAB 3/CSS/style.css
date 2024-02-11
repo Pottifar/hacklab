@@ -1,0 +1,13 @@
+h1 {
+    margin-top: 10%;
+    text-align: center;
+}
+
+#usernameInput, #passwordInput {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.inputField {
+    text-align: center;
+}
