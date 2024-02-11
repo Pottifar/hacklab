@@ -56,7 +56,7 @@ function displayPosts() {
     }
     
     // Prepare a SELECT statement to get all posts
-    $stmt = $conn->prepare("SELECT Title, Text, Votes FROM Posts");
+    $stmt = $conn->prepare("SELECT PostId, Title, Text, Votes FROM Posts");
 
     // Execute the statement
     $stmt->execute();
@@ -66,6 +66,7 @@ function displayPosts() {
 
     // Fetch all rows and display them
     while ($row = $result->fetch_assoc()) {
+        $postId = htmlspecialchars($row["PostId"]);
         $title = $row["Title"];
         $text = $row["Text"];
         $votes = $row["Votes"];
@@ -74,6 +75,12 @@ function displayPosts() {
         echo "<h2>$title</h2>";
         echo "<p>$text</p>";
         echo "<p>Votes: $votes</p>";
+        echo "
+            <form action='http://192.168.140.130/hacklab/XSS/LAB 2/PHP/deletePost.php' method='post'>
+                <input type='hidden' name='postId' value='$postId'>
+                <input type='submit' value='Delete Post'>
+            </form>
+        ";
         echo "</div>";
     }
 }
