@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     } else {
         // Handle the error...
+        echo "it works nah";
         echo "Error: " . $stmt->error;
     }
 }
