@@ -6,6 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = "web-server";
     $password = "web-server123";
     $dbname = "Hacklab";
+
+    echo "YUP";
     
     $title = $_POST['title'];
     $text = $_POST['text'];
