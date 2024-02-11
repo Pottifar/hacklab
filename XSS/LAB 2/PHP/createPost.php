@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($stmt->execute()) {
         // If the statement executed successfully, redirect to application.php
+        echo "it works";
         header("Location: http://192.168.140.130/hacklab/XSS/LAB 2/PHP/application.php");
         exit();
     } else {
