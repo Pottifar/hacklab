@@ -8,6 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = "web-server123";
     $dbname = "Hacklab";
 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
     $title = $_POST['title'];
     $text = $_POST['text'];
 
