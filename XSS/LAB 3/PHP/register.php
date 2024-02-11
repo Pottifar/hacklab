@@ -48,10 +48,10 @@ function registerNewUser($conn, $username, $password) {
         // Execute the statement
         if ($stmt->execute()) {
             // Redirect to another HTML page
-            header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/PHP/application.php");
+            header("Location: http://192.168.140.130/hacklab/XSS/LAB 3/HTML/application.html");
             exit();
         } else {
-            header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/HTML/register.html?error=2");
+            header("Location: http://192.168.140.130/hacklab/XSS/LAB 3/HTML/register.html?error=2");
             exit();
         }
     }
