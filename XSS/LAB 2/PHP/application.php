@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     displayPosts();
     
     echo "
-        <form id='postForm' action='createPost.php' method='post'>
+        <form id='postForm' action='http://192.168.140.130/hacklab/XSS/LAB%202/PHP/createPost.php' method='post'>
             <input type='text' name='title' placeholder='Title' required>
             <textarea name='text' placeholder='Text' required></textarea>
             <input type='submit' value='Create Post'>
