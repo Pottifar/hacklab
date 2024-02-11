@@ -29,7 +29,7 @@ h1 {
 
 #postForm input[type="text"],
 #postForm textarea {
-    width: 80%; /* adjust as needed */
+    width: 100%; /* adjust as needed */
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 3px;
