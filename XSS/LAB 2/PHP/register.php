@@ -33,7 +33,7 @@ function registerNewUser($conn, $username, $password) {
 
     // If a user with the given username exists
     if ($stmt->fetch()){
-        header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/HTML/register.html?error=1");
+        header("Location: http://192.168.140.130/hacklab/XSS/LAB 2/HTML/register.html?error=1");
         exit();
     } else {
         // Hash the password
