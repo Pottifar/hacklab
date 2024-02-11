@@ -9,9 +9,6 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-
-
-
 // Check if the request method is GET
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
@@ -30,15 +27,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         
     ";
     displayPosts();
+    
     echo "
-
+        <form action='createPost.php' method='post'>
+            <input type='text' name='title' placeholder='Title' required>
+            <textarea name='text' placeholder='Text' required></textarea>
+            <input type='submit' value='Create Post'>
+        </form>
     </body>
     </html>";
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Connect to database
+    $servername = "localhost";
+    $username = "web-server";
+    $password = "web-server123";
+    $dbname = "Hacklab";
+    
+    $title = $_POST['title'];
+    $text = $_POST['text'];
+
+    $stmt = $conn->prepare("INSERT INTO Posts (Title, Text, Votes) VALUES (?, ?, 0)");
+    $stmt->bind_param("ss", $title, $text);
+    $stmt->execute();
+}
+
 function displayPosts() {
 
-    
     // Connect to database
     $servername = "localhost";
     $username = "web-server";
@@ -75,4 +91,5 @@ function displayPosts() {
         echo "</div>";
     }
 }
+
 ?>
