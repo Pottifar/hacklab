@@ -12,33 +12,43 @@ h1 {
     text-align: center;
 }
 
-#postForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+#postForm, .post {
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #f8f8f8;
+    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
 
-#postForm input[type="text"],
-#postForm textarea {
-    width: 100%; /* adjust as needed */
+.post h2 {
+    margin-top: 0;
+}
+
+.post p {
+    margin: 10px 0;
+}
+
+input[type="text"], textarea {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 3px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     font-size: 16px;
     color: #333;
 }
 
-#postForm input[type="submit"] {
+input[type="submit"] {
     padding: 10px 20px;
     background-color: #007BFF;
     color: #fff;
@@ -48,6 +58,6 @@ h1 {
     font-size: 16px;
 }
 
-#postForm input[type="submit"]:hover {
+input[type="submit"]:hover {
     background-color: #0056b3;
 }

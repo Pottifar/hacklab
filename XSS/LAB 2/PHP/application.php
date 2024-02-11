@@ -71,7 +71,7 @@ function displayPosts() {
         $text = $row["Text"];
         $votes = $row["Votes"];
 
-        echo "<div>";
+        echo "<div class='post'>";
         echo "<h2>$title</h2>";
         echo "<p>$text</p>";
         echo "<p>Votes: $votes</p>";
