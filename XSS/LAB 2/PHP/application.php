@@ -5,11 +5,11 @@ session_start();
 // Check if user is not logged in
 if (!isset($_SESSION['username'])) {
     // Redirect to login page
-    header("Location: http://192.168.140.130/hacklab/XSS/LAB 1/HTML/login.html");
+    header("Location: http://192.168.140.130/hacklab/XSS/LAB 2/HTML/login.html");
     exit();
 }
 
-function searchForItem($item) {
+function browsePosts() {
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         // Connect to database
         $servername = "localhost";
@@ -26,8 +26,7 @@ function searchForItem($item) {
         }
     }
     // Prepare a SELECT statement to get the user's hashed password
-    $stmt = $conn->prepare("SELECT itemName FROM Items WHERE itemName = ?");
-    $stmt->bind_param("s", $item);
+    $stmt = $conn->prepare("SELECT * FROM Posts");
 
     // Execute the statement
     $stmt->execute();
@@ -63,26 +62,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <title>User Page</title>
     </head>
     <body>
-        <h1>Logged in as $username!</h1>
-        <form action='http://192.168.140.130/hacklab/XSS/LAB 1/PHP/application.php' method='get'>
-            <input type='text'  name='item' placeholder='Search' required>
-            <input type='submit' value='Search'>
-        </form>
-    
+        
     ";
-    if (isset($_GET['item'])) {
-        $item = $_GET['item'];
-        echo "Results: <br>";
-        if(searchForItem($item)){
-            echo "$item was found!";
-        } else {
-            echo "$item was not found.";
-        }
-    } else {
-        echo "
+    displayPosts($conn);
+    echo "
 
-            </body>
-        </html>";
+    </body>
+    </html>";
+}
+
+function displayPosts($conn) {
+    // Prepare a SELECT statement to get all posts
+    $stmt = $conn->prepare("SELECT Title, Text, Votes FROM Posts");
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Get the result
+    $result = $stmt->get_result();
+
+    // Fetch all rows and display them
+    while ($row = $result->fetch_assoc()) {
+        $title = htmlspecialchars($row["Title"]);
+        $text = htmlspecialchars($row["Text"]);
+        $votes = htmlspecialchars($row["Votes"]);
+
+        echo "<div>";
+        echo "<h2>$title</h2>";
+        echo "<p>$text</p>";
+        echo "<p>Votes: $votes</p>";
+        echo "</div>";
     }
 }
 ?>
