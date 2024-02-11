@@ -66,9 +66,9 @@ function displayPosts() {
 
     // Fetch all rows and display them
     while ($row = $result->fetch_assoc()) {
-        $title = htmlspecialchars($row["Title"]);
-        $text = htmlspecialchars($row["Text"]);
-        $votes = htmlspecialchars($row["Votes"]);
+        $title = $row["Title"];
+        $text = $row["Text"];
+        $votes = $row["Votes"];
 
         echo "<div>";
         echo "<h2>$title</h2>";
