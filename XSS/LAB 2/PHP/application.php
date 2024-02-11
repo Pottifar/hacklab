@@ -10,41 +10,6 @@ if (!isset($_SESSION['username'])) {
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    // Connect to database
-    $servername = "localhost";
-    $username = "web-server";
-    $password = "web-server123";
-    $dbname = "Hacklab";
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-}
-// Prepare a SELECT statement to get the user's hashed password
-$stmt = $conn->prepare("SELECT * FROM Posts");
-
-// Execute the statement
-$stmt->execute();
-
-// Bind the result
-$itemFound = null;
-$stmt->bind_result($itemFound);
-
-// Fetch the result
-$stmt->fetch();
-
-if ($itemFound != "") {
-    // if the item is found, return it
-    return true;
-} else {
-    // if the item is not found, return null or an appropriate message
-    return false; // or return "Item not found.";
-}
 
 
 // Check if the request method is GET
@@ -64,14 +29,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <body>
         
     ";
-    displayPosts($conn);
+    displayPosts();
     echo "
 
     </body>
     </html>";
 }
 
-function displayPosts($conn) {
+function displayPosts() {
+
+    
+    // Connect to database
+    $servername = "localhost";
+    $username = "web-server";
+    $password = "web-server123";
+    $dbname = "Hacklab";
+    
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    
     // Prepare a SELECT statement to get all posts
     $stmt = $conn->prepare("SELECT Title, Text, Votes FROM Posts");
 
