@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 function checkCredentials($conn, $username, $password) {
     // Prepare a SELECT statement to get the user's hashed password
-    $stmt = $conn->prepare("SELECT hashedPassword FROM Users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT hashedPassword FROM Users WHERE username = $username");
     $stmt->bind_param("s", $username);
 
     // Execute the statement

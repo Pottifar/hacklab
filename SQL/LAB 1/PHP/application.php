@@ -70,19 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         </form>
     
     ";
-    if (isset($_GET['item'])) {
-        $item = $_GET['item'];
-        echo "Results: <br>";
-        if(searchForItem($item)){
-            echo "$item was found!";
-        } else {
-            echo "$item was not found.";
-        }
-    } else {
-        echo "
+    
+    echo "
 
-            </body>
-        </html>";
-    }
+        </body>
+    </html>";
+    
 }
 ?>
