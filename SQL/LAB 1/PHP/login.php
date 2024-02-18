@@ -24,31 +24,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 function checkCredentials($conn, $username, $password) {
+
     // Prepare a SELECT statement to get the user's hashed password
-    $stmt = $conn->prepare("SELECT hashedPassword FROM Users WHERE username = $username");
+    $stmt = $conn->prepare("SELECT hashedPassword FROM InsecureUsers WHERE username = $username AND password = $password");
     $stmt->bind_param("s", $username);
 
     // Execute the statement
     $stmt->execute();
 
-    // Bind the result
-    $hashedPassword = "";
-    $stmt->bind_result($hashedPassword);
-
     // If a user with the given username exists
-    if ($stmt->fetch()){
-        // Verify the password
-        if (password_verify($password, $hashedPassword)) {
-            // Save the JSON string to a session variable
-            session_start();
-            $_SESSION['username'] = $username;
+    if ($stmt->fetch()){        
+        // Save the JSON string to a session variable
+        session_start();
+        $_SESSION['username'] = $username;
 
-            // Redirect to another HTML page
-            header("Location: http://192.168.140.130/hacklab/SQL/LAB 1/PHP/application.php");
-            exit();
-        } else {
-            echo "Your password or username is incorrect.";
-        }
+        // Redirect to another HTML page
+        header("Location: http://192.168.140.130/hacklab/SQL/LAB 1/PHP/application.php");
+        exit();
     } else {
         echo "Your password or username is incorrect.";
     }
