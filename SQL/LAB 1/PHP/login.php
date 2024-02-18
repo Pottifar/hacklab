@@ -25,15 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 function checkCredentials($conn, $username, $password) {
 
-    // Prepare a SELECT statement to get the user's hashed password
-    $stmt = $conn->prepare("SELECT * FROM InsecureUsers WHERE username = '$username' AND password = '$password'");
-    $stmt->bind_param("s", $username);
-
-    // Execute the statement
-    $stmt->execute();
+    // Directly insert user-submitted values into the SQL query
+    $sql = "SELECT * FROM InsecureUsers WHERE username = '$username' AND password = '$password'";
+    $result = $conn->query($sql);
 
     // If a user with the given username exists
-    if ($stmt->fetch()){        
+    if ($result && $result->num_rows > 0){        
         // Save the JSON string to a session variable
         session_start();
         $_SESSION['username'] = $username;
