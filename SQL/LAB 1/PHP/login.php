@@ -43,6 +43,7 @@ function checkCredentials($conn, $username, $password) {
         exit();
     } else {
         echo "Your password or username is incorrect.";
+        echo $username;
     }
 }
 
