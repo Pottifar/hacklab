@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 function registerNewUser($conn, $username, $password) {
     // Prepare a SELECT statement to check if the username is already taken
-    $stmt = $conn->prepare("SELECT username FROM Users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT username FROM Users WHERE username = $username");
     $stmt->bind_param("s", $username);
 
     // Execute the statement
