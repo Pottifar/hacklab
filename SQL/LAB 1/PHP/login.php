@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function checkCredentials($conn, $username, $password) {
 
     // Prepare a SELECT statement to get the user's hashed password
-    $stmt = $conn->prepare("SELECT * FROM InsecureUsers WHERE username = $username AND password = $password");
+    $stmt = $conn->prepare("SELECT * FROM InsecureUsers WHERE username = '$username' AND password = '$password'");
     $stmt->bind_param("s", $username);
 
     // Execute the statement
@@ -45,7 +45,5 @@ function checkCredentials($conn, $username, $password) {
         echo "Your password or username is incorrect.";
     }
 }
-
-
 
 ?>
